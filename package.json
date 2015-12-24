@@ -1,6 +1,6 @@
 {
-  "name": "FullBag-React",
-  "version": "0.18.0",
+  "name": "Quotes-app",
+  "version": "0.1.0",
   "description": "React/redux dashboard with firebase data and auth",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,6 @@
     "test": "node -r dotenv/config ./node_modules/karma/bin/karma start bin/karma.js",
     "test:dev": "npm run test -- --watch",
     "deploy": "npm run test && npm run compile"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abachuk/fullbag-react-redux-dashboard.git"
   },
   "author": "Alex Bachuk, http://alexbachuk.com",
   "license": "MIT",

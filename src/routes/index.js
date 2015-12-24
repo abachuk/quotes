@@ -42,6 +42,7 @@ export default (
 
   <Route component={LoginLayout} path='/login'>
     <IndexRoute component={LoginView} />
+    <Route component={AboutView} path='/register' />
     <Route component={AboutView} path='/logon' />
   </Route>
   </Route>

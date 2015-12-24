@@ -7,6 +7,7 @@ import LoginView from 'views/LoginView'
 import NewrecipeView from 'views/NewrecipeView'
 import AllrecipesView from 'views/AllrecipesView'
 import ProfileView from 'views/ProfileView'
+import RegisterView from 'views/RegisterView'
 
 const ref = new Firebase(constants.FIREBASE)
 let authData = ref.getAuth()
@@ -42,7 +43,7 @@ export default (
 
   <Route component={LoginLayout} path='/login'>
     <IndexRoute component={LoginView} />
-    <Route component={AboutView} path='/register' />
+    <Route component={RegisterView} path='/register' />
     <Route component={AboutView} path='/logon' />
   </Route>
   </Route>

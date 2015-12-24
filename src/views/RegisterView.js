@@ -54,8 +54,16 @@ export class RegisterView extends React.Component {
             <label htmlFor='password'>Password</label>
             <input type='password' ref='password' className='form-control' id='password' placeholder='Password' />
           </div>
+          <div className='form-group'>
+            <label htmlFor='repeat-password'>Password</label>
+            <input type='password' ref='repeatPassword' className='form-control' id='repeat-password' placeholder='Repeat Password' />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='invite'>Invite</label>
+            <input type='invite' ref='invite' className='form-control' id='invite' placeholder='Invite' />
+          </div>
 
-          <button type='submit' className='btn btn-default'>Login</button>
+          <button type='submit' className='btn btn-default'>Register</button>
         </form>
       </div>
     )

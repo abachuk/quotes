@@ -1,31 +1,45 @@
 import React from 'react'
 import 'styles/core.scss'
+import Firebase from 'firebase'
+import constants from 'utils/constants'
+import { connect } from 'react-redux'
+
+const ref = new Firebase(constants.FIREBASE)
+const quotesRef = ref.child('quotes')
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
 
 export class QuotesNew extends React.Component {
+
+  static propTypes = {
+    auth: React.PropTypes.object
+  }
 
   addOne (e) {
     e.preventDefault()
     console.log(this)
   }
 
-  handleFile (e) {
-    const self = this
-    let reader = new FileReader()
-    let file = e.target.files[0]
-    reader.onload = function (upload) {
-      self.setState({
-        data_uri: upload.target.result
-      })
-    }
-
-    reader.readAsDataURL(file)
-  }
-
   handleSubmit (e) {
     e.preventDefault()
     console.log(this)
+
     let title = this.refs.title.value
-    console.log(title)
+    let description = this.refs.description.value
+    let author = this.refs.author.value
+    let category = this.refs.category.value
+    let userId = this.props.auth.uid
+
+    quotesRef.push({
+      title: title,
+      text: description,
+      author: author,
+      category: category,
+      createdBy: userId,
+      createdAt: new Date()
+    })
   }
 
   render () {
@@ -54,7 +68,6 @@ export class QuotesNew extends React.Component {
             <input type='text' className='form-control' id='category' placeholder='category (quote, joke, etc)' ref='category' />
           </div>
 
-
           <input type='submit' value='Create quote' className='btn btn-primary' />
 
         </form>
@@ -63,4 +76,4 @@ export class QuotesNew extends React.Component {
   }
 }
 
-export default QuotesNew
+export default connect(mapStateToProps)(QuotesNew)

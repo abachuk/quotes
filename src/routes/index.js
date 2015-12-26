@@ -4,7 +4,7 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 import LoginLayout from 'layouts/LoginLayout'
 import LoginView from 'views/LoginView'
-import NewrecipeView from 'views/NewrecipeView'
+import QuotesNew from 'views/QuotesNew'
 import QuotesList from 'views/QuotesList'
 import ProfileView from 'views/ProfileView'
 import RegisterView from 'views/RegisterView'
@@ -37,7 +37,7 @@ export default (
     <Route path='/about' component={AboutView} />
     <Route component={AboutView} path='/about' />
     <Route component={QuotesList} path='/quotes/all' />
-    <Route component={NewrecipeView} path='/quotes/new' />
+    <Route component={QuotesNew} path='/quotes/new' />
     <Route component={ProfileView} path='/profile' />
   </Route>
 

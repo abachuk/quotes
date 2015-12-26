@@ -17,7 +17,7 @@ import 'styles/core.scss'
 //   auth: state.auth
 // })
 
-export class AllrecipesView extends React.Component {
+export class QuotesList extends React.Component {
   render () {
     return (
       <form>
@@ -28,4 +28,4 @@ export class AllrecipesView extends React.Component {
   }
 }
 
-export default AllrecipesView
+export default QuotesList

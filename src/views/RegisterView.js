@@ -29,20 +29,20 @@ export class RegisterView extends React.Component {
     let invite = this.refs.invite.value
     let self = this
 
-    if(invite === 'bachuk') {
-    ref.createUser({
-      'email': email,
-      'password': password
-    }, function (error, authData) {
-      if (error) {
-        console.log('Login Failed!', error)
-      } else {
-        console.log(self)
-        console.log('registered with', authData)
-        self.props.history.pushState(null, '/')
-        self.props.login(authData)
-      }
-    })
+    if (invite === 'bachuk') {
+      ref.createUser({
+        'email': email,
+        'password': password
+      }, function (error, authData) {
+        if (error) {
+          console.log('Login Failed!', error)
+        } else {
+          console.log(self)
+          console.log('registered with', authData)
+          self.props.history.pushState(null, '/')
+          self.props.login(authData)
+        }
+      })
     } else {
       console.log('invite is incorrect')
     }

@@ -5,7 +5,7 @@ import constants from 'utils/constants'
 import LoginLayout from 'layouts/LoginLayout'
 import LoginView from 'views/LoginView'
 import NewrecipeView from 'views/NewrecipeView'
-import AllrecipesView from 'views/AllrecipesView'
+import QuotesList from 'views/QuotesList'
 import ProfileView from 'views/ProfileView'
 import RegisterView from 'views/RegisterView'
 
@@ -36,8 +36,8 @@ export default (
     <IndexRoute component={HomeView} />
     <Route path='/about' component={AboutView} />
     <Route component={AboutView} path='/about' />
-    <Route component={AllrecipesView} path='/recipes/all' />
-    <Route component={NewrecipeView} path='/recipes/new' />
+    <Route component={QuotesList} path='/quotes/all' />
+    <Route component={NewrecipeView} path='/quotes/new' />
     <Route component={ProfileView} path='/profile' />
   </Route>
 

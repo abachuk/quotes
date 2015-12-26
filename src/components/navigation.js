@@ -48,8 +48,8 @@ export class Navbar extends React.Component {
     <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
       <ul className='nav navbar-nav'>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/recipes/all'>Recipes</Link></li>
-        <li><Link to='/recipes/new'>New Recipe</Link></li>
+        <li><Link to='/quotes/all'>List</Link></li>
+        <li><Link to='/quotes/new'>New Entry</Link></li>
         <li><Link to='/profile'>My profile</Link></li>
       </ul>
       <ul className='nav navbar-nav navbar-right'>

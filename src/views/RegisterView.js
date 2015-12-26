@@ -4,6 +4,7 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 import { actions as authActions } from '../redux/modules/auth'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 const ref = new Firebase(constants.FIREBASE)
 // let auth = ref.getAuth()
@@ -45,6 +46,7 @@ export class RegisterView extends React.Component {
   render () {
     return (
       <div>
+        <h1>Register</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className='form-group'>
             <label htmlFor='username'>Email address</label>
@@ -63,7 +65,7 @@ export class RegisterView extends React.Component {
             <input type='invite' ref='invite' className='form-control' id='invite' placeholder='Invite' />
           </div>
 
-          <button type='submit' className='btn btn-default'>Register</button>
+          <button type='submit' className='btn btn-default'>Register</button> or <Link to='/login'>Login</Link>
         </form>
       </div>
     )

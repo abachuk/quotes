@@ -9,7 +9,7 @@ export default class LoginLayout extends React.Component {
   render () {
     return (
       <div className={styles['login-container']}>
-        <div className='col-md-6 core__col-md-6'>
+        <div className={styles['login-forms']}>
           {this.props.children}
         </div>
       </div>

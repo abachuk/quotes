@@ -4,6 +4,7 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 import { actions as authActions } from '../redux/modules/auth'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 // import { createHistory } from 'history'
 // import { pushPath } from 'redux-simple-router'
 
@@ -50,6 +51,7 @@ export class LoginView extends React.Component {
   render () {
     return (
       <div>
+        <h1>Sign in</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className='form-group'>
             <label htmlFor='username'>Email address</label>
@@ -60,7 +62,7 @@ export class LoginView extends React.Component {
             <input type='password' ref='password' className='form-control' id='password' placeholder='Password' />
           </div>
 
-          <button type='submit' className='btn btn-default'>Login</button>
+          <button type='submit' className='btn btn-default'>Login</button> or <Link to='/register'>Register</Link>
         </form>
       </div>
     )

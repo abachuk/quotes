@@ -1,9 +1,16 @@
 .login-container {
   display: flex;
   align-items: center;
-  composes: 'page-container' from '../styles/vendor/bootstrap.css';
+  composes: page-container from '../styles/vendor/bootstrap.css';
+  justify-content: space-around;
+  -webkit-align-items: center;
+	-webkit-box-align: center;
+	align-items: center;
+  height: 100%;
 }
 
-.login-container .col-md-6 {
-  flex: 1;
+.login-forms {
+  width: 40%;
+  min-width: 300px;
+  // composes: col-md-6 from '../styles/vendor/bootstrap.css';
 }

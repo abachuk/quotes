@@ -1,29 +1,36 @@
 import React from 'react'
 import 'styles/core.scss'
-import Firebase from 'firebase'
-import constants from 'utils/constants'
 import { Link } from 'react-router'
+import { actions as quoteActions } from '../redux/modules/getquotes'
+import { connect } from 'react-redux'
 
-const ref = new Firebase(constants.FIREBASE + '/quotes')
-ref.on('value', function (snapshot) {
-  let quotes = snapshot.val()
-}, function (errorObject) {
-  console.log('The read failed: ' + errorObject.code)
+const mapStateToProps = (state) => ({
+  quotes: state.quotes
 })
 
+// {this.props.quotes.map.map(function (quote) {
+//   return <li key={quote}>quote.text</li>
+// })}
 export class QuotesList extends React.Component {
+
+  static propTypes = {
+    quotes: React.PropTypes.object,
+    getQuotes: React.PropTypes.func
+  }
+
+  componentDidMount () {
+    this.props.getQuotes()
+  }
 
   render () {
     return (
       <div>
         <ul>
-          {this.props.quotes.map.map(function (quote) {
-            return <li key={quote}>quote.text</li>
-          })}
+          <li>Yo</li>
         </ul>
       </div>
     )
   }
 }
 
-export default QuotesList
+export default connect(mapStateToProps, quoteActions)(QuotesList)

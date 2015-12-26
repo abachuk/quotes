@@ -5,8 +5,6 @@ import constants from 'utils/constants'
 import { Link } from 'react-router'
 
 const ref = new Firebase(constants.FIREBASE + '/quotes')
-
-// Attach an asynchronous callback to read the data at our posts reference
 ref.on('value', function (snapshot) {
   let quotes = snapshot.val()
 }, function (errorObject) {
@@ -14,11 +12,14 @@ ref.on('value', function (snapshot) {
 })
 
 export class QuotesList extends React.Component {
+
   render () {
     return (
       <div>
         <ul>
-
+          {this.props.quotes.map.map(function (quote) {
+            return <li key={quote}>quote.text</li>
+          })}
         </ul>
       </div>
     )

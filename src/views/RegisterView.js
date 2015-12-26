@@ -26,9 +26,11 @@ export class RegisterView extends React.Component {
     console.log(this)
     let email = this.refs.email.value
     let password = this.refs.password.value
+    let invite = this.refs.invite.value
     let self = this
 
-    ref.authWithPassword({
+    if(invite === 'bachuk') {
+    ref.createUser({
       'email': email,
       'password': password
     }, function (error, authData) {
@@ -36,11 +38,14 @@ export class RegisterView extends React.Component {
         console.log('Login Failed!', error)
       } else {
         console.log(self)
-        console.log('Authenticated successfully with payload:', authData)
+        console.log('registered with', authData)
         self.props.history.pushState(null, '/')
         self.props.login(authData)
       }
     })
+    } else {
+      console.log('invite is incorrect')
+    }
   }
 
   render () {
@@ -62,7 +67,7 @@ export class RegisterView extends React.Component {
           </div>
           <div className='form-group'>
             <label htmlFor='invite'>Invite</label>
-            <input type='invite' ref='invite' className='form-control' id='invite' placeholder='Invite' />
+            <input type='invite' ref='invite' className='form-control' id='invite' placeholder='Invite Code' />
           </div>
 
           <button type='submit' className='btn btn-default'>Register</button> or <Link to='/login'>Login</Link>

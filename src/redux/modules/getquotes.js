@@ -4,10 +4,9 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 
 const ref = new Firebase(constants.FIREBASE + '/quotes')
-let quotes = 'yo'
-
-ref.on('value', function (snapshot) {
-  quotes = snapshot.val()
+let quotes = ref.on('value', function (snapshot) {
+  return snapshot.val()
+  console.log(quotes)
 }, function (errorObject) {
   console.log('The read failed: ' + errorObject.code)
 })
@@ -15,13 +14,36 @@ ref.on('value', function (snapshot) {
 // ------------------------------------
 // Constants
 // ------------------------------------
-const GETQUOTES = 'GETQUOTES'
+const GET_QUOTES = 'GET_QUOTES'
+const FETCH_QUOTES = 'FETCH_QUOTES'
+const FETCH_STARTED = 'FETCH_STARTED'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getQuotes = createAction(GETQUOTES, (value = quotes) => value)
+export const fetch = () => {
+    return (dispatch) => {
+      ref.on('value', snapshot => dispatch({
+        type: GET_QUOTES,
+        payload: dataFromSnapshot(snapshot)
+      }))
+    }
+  }
+
+export const getQuotes = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_STARTED })
+    dispatch(fetch())
+  }
+}
+
+function dataFromSnapshot(snapshot) {
+  let data = snapshot.val()
+  return data
+}
+
 export const actions = {
+  fetch,
   getQuotes
 }
 
@@ -37,5 +59,5 @@ export const actions = {
 // Reducer
 // ------------------------------------
 export default handleActions({
-  [GETQUOTES]: (state, { payload }) => state + payload
+  [GET_QUOTES]: (state, { payload }) => state + payload
 }, quotes)

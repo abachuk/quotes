@@ -1,29 +1,26 @@
 import React from 'react'
 import 'styles/core.scss'
-// import Firebase from 'firebase'
-// import constants from 'utils/constants'
-// import { actions as authActions } from '../redux/modules/auth'
-// import { connect } from 'react-redux'
-// import { createHistory } from 'history'
+import Firebase from 'firebase'
+import constants from 'utils/constants'
+import { Link } from 'react-router'
 
-// let history = createHistory()
-// import { history } from 'react-router'
+const ref = new Firebase(constants.FIREBASE + '/quotes')
 
-// const ref = new Firebase(constants.FIREBASE)
-// let auth = ref.getAuth()
-// import { Link } from 'react-router'
-
-// const mapStateToProps = (state) => ({
-//   auth: state.auth
-// })
+// Attach an asynchronous callback to read the data at our posts reference
+ref.on('value', function (snapshot) {
+  let quotes = snapshot.val()
+}, function (errorObject) {
+  console.log('The read failed: ' + errorObject.code)
+})
 
 export class QuotesList extends React.Component {
   render () {
     return (
-      <form>
-        <h1>New</h1>
-        <input type='text' />
-      </form>
+      <div>
+        <ul>
+
+        </ul>
+      </div>
     )
   }
 }

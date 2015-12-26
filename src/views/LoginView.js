@@ -4,7 +4,6 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 import { actions as authActions } from '../redux/modules/auth'
 import { connect } from 'react-redux'
-import styles from '../styles/login.scss'
 // import { createHistory } from 'history'
 // import { pushPath } from 'redux-simple-router'
 

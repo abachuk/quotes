@@ -1,5 +1,5 @@
 import React from 'react'
-import 'styles/core.scss'
+import styles from '../styles/LoginStyles.scss'
 
 export default class LoginLayout extends React.Component {
   static propTypes = {
@@ -8,7 +8,7 @@ export default class LoginLayout extends React.Component {
 
   render () {
     return (
-      <div className='page-container login-container core__login-container'>
+      <div className={styles['login-container']}>
         <div className='col-md-6 core__col-md-6'>
           {this.props.children}
         </div>

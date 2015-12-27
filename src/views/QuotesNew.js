@@ -3,9 +3,11 @@ import 'styles/core.scss'
 import Firebase from 'firebase'
 import constants from 'utils/constants'
 import { connect } from 'react-redux'
+import {reduxForm} from 'redux-form'
 
 const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
+export const fields = ['title', 'description', 'author', 'tags', 'category']
 
 const mapStateToProps = (state) => ({
   auth: state.auth
@@ -81,5 +83,10 @@ export class QuotesNew extends React.Component {
     )
   }
 }
+
+reduxForm({
+  form: 'newQuote',                           // a unique name for this form
+  fields: ['firstName', 'lastName', 'email'] // all the fields in your form
+})
 
 export default connect(mapStateToProps)(QuotesNew)

@@ -1,4 +1,4 @@
-import { createAction, handleActions } from 'redux-actions'
+import { handleActions } from 'redux-actions'
 // import createReducer from 'utils/createReducer'
 import Firebase from 'firebase'
 import constants from 'utils/constants'
@@ -10,20 +10,19 @@ let quotes = {}
 // Constants
 // ------------------------------------
 const GET_QUOTES = 'GET_QUOTES'
-const FETCH_QUOTES = 'FETCH_QUOTES'
 const FETCH_STARTED = 'FETCH_STARTED'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 export const fetch = () => {
-    return (dispatch) => {
-      ref.on('value', snapshot => dispatch({
-        type: GET_QUOTES,
-        payload: dataFromSnapshot(snapshot)
-      }))
-    }
+  return (dispatch) => {
+    ref.on('value', snapshot => dispatch({
+      type: GET_QUOTES,
+      payload: dataFromSnapshot(snapshot)
+    }))
   }
+}
 
 export const getQuotes = () => {
   return (dispatch) => {
@@ -32,7 +31,7 @@ export const getQuotes = () => {
   }
 }
 
-function dataFromSnapshot(snapshot) {
+function dataFromSnapshot (snapshot) {
   let data = snapshot.val()
   return data
 }

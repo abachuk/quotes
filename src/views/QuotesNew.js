@@ -24,14 +24,13 @@ export class QuotesNew extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    console.log(this)
 
+    let userId = this.props.auth.uid
     let title = this.refs.title.value
     let description = this.refs.description.value
     let author = this.refs.author.value
     let category = this.refs.category.value
-    let userId = this.props.auth.uid
-    let tags = (this.props.tags.uid).split(',')
+    let tags = (this.refs.tags.value).split(',')
 
     quotesRef.push({
       title: title,

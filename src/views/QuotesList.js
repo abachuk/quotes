@@ -15,7 +15,8 @@ export class QuotesList extends React.Component {
 
   static propTypes = {
     quotes: React.PropTypes.object,
-    fetch: React.PropTypes.func
+    fetch: React.PropTypes.func,
+    getQuotes: React.PropTypes.func
   }
 
   componentDidMount () {
@@ -23,7 +24,7 @@ export class QuotesList extends React.Component {
     console.log(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     console.log(nextProps)
   }
 

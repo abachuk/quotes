@@ -31,6 +31,7 @@ export class QuotesNew extends React.Component {
     let author = this.refs.author.value
     let category = this.refs.category.value
     let userId = this.props.auth.uid
+    let tags = (this.props.tags.uid).split(',')
 
     quotesRef.push({
       title: title,
@@ -38,7 +39,8 @@ export class QuotesNew extends React.Component {
       author: author,
       category: category,
       createdBy: userId,
-      createdAt: new Date()
+      createdAt: new Date(),
+      tags: tags
     })
   }
 
@@ -66,6 +68,11 @@ export class QuotesNew extends React.Component {
           <div className='form-group'>
             <label forHtml='category'>Category</label>
             <input type='text' className='form-control' id='category' placeholder='category (quote, joke, etc)' ref='category' />
+          </div>
+
+          <div className='form-group'>
+            <label forHtml='tags'>Tags</label>
+            <input type='text' className='form-control' id='tags' placeholder='tags (comma separated)' ref='tags' />
           </div>
 
           <input type='submit' value='Create quote' className='btn btn-primary' />

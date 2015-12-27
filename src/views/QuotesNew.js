@@ -16,7 +16,11 @@ const mapStateToProps = (state) => ({
 export class QuotesNew extends React.Component {
 
   static propTypes = {
-    auth: React.PropTypes.object
+    auth: React.PropTypes.object,
+    fields: React.PropTypes.object.isRequired,
+    handleSubmit: React.PropTypes.func.isRequired,
+    resetForm: React.PropTypes.func.isRequired,
+    submitting: React.PropTypes.bool.isRequired
   }
 
   addOne (e) {
@@ -46,6 +50,13 @@ export class QuotesNew extends React.Component {
   }
 
   render () {
+    const {
+      fields: {title, description, author, tags, category},
+      handleSubmit,
+      resetForm,
+      submitting
+      } = this.props
+
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -53,7 +64,7 @@ export class QuotesNew extends React.Component {
 
           <div className='form-group'>
             <label forHtml='title'>Title</label>
-            <input type='text' className='form-control' id='title' placeholder='Title (optional)' ref='title' />
+            <input type='text' className='form-control' id='title' placeholder='Title (optional)' ref='title' {...title} />
           </div>
 
           <div className='form-group'>
@@ -84,9 +95,7 @@ export class QuotesNew extends React.Component {
   }
 }
 
-reduxForm({
-  form: 'newQuote',                           // a unique name for this form
-  fields: ['firstName', 'lastName', 'email'] // all the fields in your form
-})
-
-export default connect(mapStateToProps)(QuotesNew)
+export default reduxForm({
+  form: 'newQuote',
+  fields
+})(QuotesNew)

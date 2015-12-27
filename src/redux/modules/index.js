@@ -12,7 +12,7 @@ export default combineReducers({
   quotes: getquotes,
   form: formReducer.normalize({
     newQuote: {
-      tags: value => value && value.split(',')
+      tags: value => value && value.toString().split(',')
     }
   })
 })

@@ -8,6 +8,10 @@ const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
 export const fields = ['title', 'description', 'author', 'tags', 'category']
 
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+
 export class QuotesNew extends React.Component {
 
   static propTypes = {
@@ -25,22 +29,18 @@ export class QuotesNew extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-
+    console.log(this)
+    let fields = this.props.fields
     let userId = this.props.auth.uid
-    let title = this.refs.title.value
-    let description = this.refs.description.value
-    let author = this.refs.author.value
-    let category = this.refs.category.value
-    let tags = (this.refs.tags.value).split(',')
 
     quotesRef.push({
-      title: title,
-      text: description,
-      author: author,
-      category: category,
+      title: fields.title.value,
+      text: fields.description.value,
+      author: fields.author.value,
+      category: fields.category.value,
       createdBy: userId,
       createdAt: new Date(),
-      tags: tags
+      tags: fields.tags.value
     })
   }
 
@@ -50,7 +50,7 @@ export class QuotesNew extends React.Component {
       handleSubmit,
       resetForm,
       submitting
-      } = this.props
+    } = this.props
 
     return (
       <div className='container'>
@@ -93,5 +93,8 @@ export class QuotesNew extends React.Component {
 export default reduxForm({
   form: 'newQuote',
   fields,
-  normalize: ['tags']
-})(QuotesNew)
+  normalize: ['tags'],
+  initialValues: mapStateToProps
+}, state => ({
+  initialValues: state.auth
+}))(QuotesNew)

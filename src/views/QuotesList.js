@@ -15,11 +15,16 @@ export class QuotesList extends React.Component {
 
   static propTypes = {
     quotes: React.PropTypes.object,
-    getQuotes: React.PropTypes.func
+    fetch: React.PropTypes.func
   }
 
   componentDidMount () {
     this.props.getQuotes()
+    console.log(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
   }
 
   render () {

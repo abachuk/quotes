@@ -4,12 +4,7 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 
 const ref = new Firebase(constants.FIREBASE + '/quotes')
-let quotes = ref.on('value', function (snapshot) {
-  return snapshot.val()
-  console.log(quotes)
-}, function (errorObject) {
-  console.log('The read failed: ' + errorObject.code)
-})
+let quotes = {}
 
 // ------------------------------------
 // Constants
@@ -59,5 +54,5 @@ export const actions = {
 // Reducer
 // ------------------------------------
 export default handleActions({
-  [GET_QUOTES]: (state, { payload }) => state + payload
+  [GET_QUOTES]: (state, { payload }) => payload
 }, quotes)

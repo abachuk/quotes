@@ -30,8 +30,7 @@ export class HomeView extends React.Component {
     auth: React.PropTypes.object
   }
 
-  render () {
-    console.log(this)
+  render () {    
     return (
       <div className='container text-center'>
 

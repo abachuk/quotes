@@ -10,5 +10,9 @@ export default combineReducers({
   router: routeReducer,
   auth: auth,
   quotes: getquotes,
-  form: formReducer
+  form: formReducer.normalize({
+    newQuote: {
+      tags: value => value && value.split(',')
+    }
+  })
 })

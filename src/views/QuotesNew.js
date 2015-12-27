@@ -92,5 +92,6 @@ export class QuotesNew extends React.Component {
 
 export default reduxForm({
   form: 'newQuote',
-  fields
+  fields,
+  normalize: ['tags']
 })(QuotesNew)

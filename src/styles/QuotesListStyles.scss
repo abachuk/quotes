@@ -1,0 +1,13 @@
+.quotes-list {
+    list-style: none;
+    display: flex;
+}
+
+.quotes-tile {
+  height: 200px;
+  width: 25%;
+  margin: 20px;
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 25px;
+}

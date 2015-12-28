@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { actions as quoteActions } from '../redux/modules/getquotes'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import styles from '../styles/QuotesListStyles.scss'
 
 const mapStateToProps = (state) => ({
   quotes: state.quotes
@@ -28,9 +29,9 @@ export class QuotesList extends React.Component {
   render () {
     return (
       <div>
-        <ul>
+        <ul className={styles['quotes-list']}>
           {_.map(this.props.quotes, function(val, key) {
-            return <li key={key}>{val.text}</li>
+            return <li className={styles['quotes-tile']} key={key}>{val.text}</li>
           })}
         </ul>
       </div>

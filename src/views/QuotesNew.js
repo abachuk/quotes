@@ -1,6 +1,7 @@
 import React from 'react'
 import 'styles/core.scss'
 import Firebase from 'firebase'
+import { connect } from 'react-redux'
 import constants from 'utils/constants'
 import {reduxForm} from 'redux-form'
 
@@ -29,18 +30,18 @@ export class QuotesNew extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    console.log(this)
+    console.log(this.props.fields)
     let fields = this.props.fields
     let userId = this.props.auth.uid
 
     quotesRef.push({
-      title: fields.title.value,
-      text: fields.description.value,
-      author: fields.author.value,
-      category: fields.category.value,
+      title: fields.title ? fields.title.value : '',
+      text: fields.description ? fields.description.value : '',
+      author: fields.author ? fields.author.value : '',
+      category: fields.category ? fields.category.value : '',
       createdBy: userId,
       createdAt: new Date(),
-      tags: fields.tags.value
+      tags: fields.tags ? fields.tags.value : []
     })
   }
 
@@ -49,7 +50,8 @@ export class QuotesNew extends React.Component {
       fields: {title, description, author, tags, category},
       handleSubmit,
       resetForm,
-      submitting
+      submitting,
+      auth
     } = this.props
 
     return (
@@ -90,11 +92,10 @@ export class QuotesNew extends React.Component {
   }
 }
 
-export default reduxForm({
+QuotesNew = reduxForm({
   form: 'newQuote',
   fields,
-  normalize: ['tags'],
-  initialValues: mapStateToProps
-}, state => ({
-  initialValues: state.auth
-}))(QuotesNew)
+  normalize: ['tags']
+})(QuotesNew)
+
+export default connect(mapStateToProps)(QuotesNew)

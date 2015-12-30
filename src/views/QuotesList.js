@@ -29,7 +29,7 @@ export class QuotesList extends React.Component {
       <div>
         <ul className={styles['quotes-list']}>
           {_.map(this.props.quotes, function (val, key) {
-            return <QuoteTile quote={val} key={key} />
+            return <QuoteTile quote={val} key={key} id={key} />
           })}
         </ul>
       </div>

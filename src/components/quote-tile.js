@@ -4,8 +4,8 @@ import styles from '../styles/QuotesListStyles.scss'
 export class QuoteTile extends React.Component {
 
   static propTypes = {
-    key: React.PropTypes.string,
-    quote: React.PropTypes.object
+    quote: React.PropTypes.object,
+    id: React.PropTypes.string
   }
 
   viewItem (e) {
@@ -23,7 +23,7 @@ export class QuoteTile extends React.Component {
 
   render () {
     return (
-      <li className={styles['quotes-tile']} key={this.props.key}>
+      <li className={styles['quotes-tile']}>
         {this.props.quote.text}
         <a href='#' onClick={this.viewItem.bind(this)}>View</a>
         <a href='#' onClick={this.editItem.bind(this)}>Edit</a>

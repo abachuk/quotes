@@ -22,8 +22,9 @@ export class QuoteTile extends React.Component {
 
   deleteItem (e) {
     let quote = ref.child('quotes/' + this.props.id)
-    console.log('delete')
-    quote.remove()
+    if (window.confirm('Do you really want to delete this?')) {
+      quote.remove()
+    }
   }
 
   render () {

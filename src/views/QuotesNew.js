@@ -48,10 +48,8 @@ export class QuotesNew extends React.Component {
   render () {
     const {
       fields: {title, description, author, tags, category},
-      handleSubmit,
       resetForm,
-      submitting,
-      auth
+      submitting
     } = this.props
 
     return (

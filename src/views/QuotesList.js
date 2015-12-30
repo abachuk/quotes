@@ -26,12 +26,31 @@ export class QuotesList extends React.Component {
     console.log(this.props)
   }
 
+  handleClick (e) {
+
+  }
+
+  editItem (e) {
+
+  }
+
+  deleteItem (e) {
+
+  }
+
   render () {
     return (
       <div>
         <ul className={styles['quotes-list']}>
-          {_.map(this.props.quotes, function(val, key) {
-            return <li className={styles['quotes-tile']} key={key}>{val.text}</li>
+          {_.map(this.props.quotes, function (val, key) {
+            return (
+            <li className={styles['quotes-tile']} key={key}>
+            {val.text}
+            <a href='#' onClick={this.handleClick.bind(this)}>View</a>
+            <a href='#' onClick={this.editItem.bind(this)}>Edit</a>
+            <a href='#' onClick={this.deleteItem.bind(this)}>Delete</a>
+            </li>
+          )
           })}
         </ul>
       </div>

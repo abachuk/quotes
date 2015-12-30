@@ -4,20 +4,21 @@ import styles from '../styles/QuotesListStyles.scss'
 export class QuoteTile extends React.Component {
 
   static propTypes = {
-    key: React.PropTypes.object,
+    key: React.PropTypes.string,
     quote: React.PropTypes.object
   }
 
   viewItem (e) {
-
+    console.log('view')
   }
 
   editItem (e) {
-
+    console.log('edit')
   }
 
   deleteItem (e) {
-
+    console.log('delete')
+    console.log(this)
   }
 
   render () {

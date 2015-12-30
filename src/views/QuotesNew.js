@@ -7,7 +7,7 @@ import {reduxForm} from 'redux-form'
 
 const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
-export const fields = ['title', 'description', 'author', 'tags', 'category']
+export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
 
 const mapStateToProps = (state) => ({
   auth: state.auth
@@ -23,7 +23,7 @@ export class QuotesNew extends React.Component {
     submitting: React.PropTypes.bool.isRequired
   }
 
-  addOne (e) {
+  handleFile (fieldName, e) {
     e.preventDefault()
     console.log(this)
   }
@@ -41,13 +41,14 @@ export class QuotesNew extends React.Component {
       category: fields.category ? fields.category.value : '',
       createdBy: userId,
       createdAt: new Date(),
-      tags: fields.tags ? fields.tags.value : []
+      tags: fields.tags ? fields.tags.value : [],
+      image: fields.image ? fields.image.value : ''
     })
   }
 
   render () {
     const {
-      fields: {title, description, author, tags, category},
+      fields: {title, description, author, tags, category, image},
       resetForm,
       submitting
     } = this.props
@@ -80,6 +81,11 @@ export class QuotesNew extends React.Component {
           <div className='form-group'>
             <label forHtml='tags'>Tags</label>
             <input type='text' className='form-control' id='tags' placeholder='tags (comma separated)' ref='tags' {...tags} />
+          </div>
+
+          <div className='form-group'>
+            <label forHtml='image'>Background</label>
+            <input type='file' className='form-control' id='image' onChange={this.handleFile.bind(this, 'image')} placeholder='background image' ref='image' {...image} />
           </div>
 
           <input type='submit' value='Create quote' className='btn btn-primary' />

@@ -11,9 +11,6 @@ const mapStateToProps = (state) => ({
   quotes: state.quotes
 })
 
-// {this.props.quotes.map.map(function (quote) {
-//   return <li key={quote}>quote.text</li>
-// })}
 export class QuotesList extends React.Component {
 
   static propTypes = {
@@ -25,18 +22,6 @@ export class QuotesList extends React.Component {
   componentDidMount () {
     this.props.getQuotes()
     console.log(this.props)
-  }
-
-  viewItem (e) {
-
-  }
-
-  editItem (e) {
-
-  }
-
-  deleteItem (e) {
-
   }
 
   render () {

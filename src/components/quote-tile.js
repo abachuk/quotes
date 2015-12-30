@@ -1,5 +1,9 @@
 import React from 'react'
 import styles from '../styles/QuotesListStyles.scss'
+import Firebase from 'firebase'
+import constants from 'utils/constants'
+
+const ref = new Firebase(constants.FIREBASE)
 
 export class QuoteTile extends React.Component {
 
@@ -17,8 +21,9 @@ export class QuoteTile extends React.Component {
   }
 
   deleteItem (e) {
+    let quote = ref.child('quotes/' + this.props.id)
     console.log('delete')
-    console.log(this)
+    quote.remove()
   }
 
   render () {

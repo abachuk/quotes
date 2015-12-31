@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/QuotesListStyles.scss'
 import Firebase from 'firebase'
 import constants from 'utils/constants'
+import { Link } from 'react-router'
 
 const ref = new Firebase(constants.FIREBASE)
 
@@ -17,7 +18,7 @@ export class QuoteTile extends React.Component {
   }
 
   editItem (e) {
-    console.log('edit')
+    console.log(this.props)
   }
 
   deleteItem (e) {
@@ -36,7 +37,7 @@ export class QuoteTile extends React.Component {
         </div>
 
         <footer className={styles['quotes-footer']}>
-          <a href='#' onClick={this.viewItem.bind(this)}>View</a>
+          <Link to={`/quotes/${this.props.id}`}>View</Link>
           <a href='#' onClick={this.editItem.bind(this)}>Edit</a>
           <a href='#' onClick={this.deleteItem.bind(this)}>Delete</a>
         </footer>

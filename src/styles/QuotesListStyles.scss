@@ -1,6 +1,9 @@
+.quotes-container {
+
+}
+
 .quotes-list {
     list-style: none;
-    display: flex;
     justify-content: space-around;
     margin: 0;
     padding: 0;
@@ -14,4 +17,5 @@
   background: #eee;
   border: 1px solid #ccc;
   padding: 25px;
+  float: left;
 }

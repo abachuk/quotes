@@ -4,8 +4,11 @@ import Firebase from 'firebase'
 import constants from 'utils/constants'
 import LoginLayout from 'layouts/LoginLayout'
 import LoginView from 'views/LoginView'
+
 import QuotesNew from 'views/QuotesNew'
 import QuotesList from 'views/QuotesList'
+import QuotesSingle from 'views/QuotesSingle'
+
 import ProfileView from 'views/ProfileView'
 import RegisterView from 'views/RegisterView'
 
@@ -36,8 +39,11 @@ export default (
     <IndexRoute component={HomeView} />
     <Route path='/about' component={AboutView} />
     <Route component={AboutView} path='/about' />
+
+    <Route component={QuotesSingle} path='/quotes/:id' />
     <Route component={QuotesList} path='/quotes/all' />
     <Route component={QuotesNew} path='/quotes/new' />
+
     <Route component={ProfileView} path='/profile' />
   </Route>
 

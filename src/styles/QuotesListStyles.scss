@@ -12,10 +12,29 @@
 
 .quotes-tile {
   height: 200px;
-  width: 25%;
+  width: 30%;
   margin: 20px;
   background: #eee;
   border: 1px solid #ccc;
-  padding: 25px;
+  padding: 25px 25px 0;
   float: left;
+  position: relative;
+}
+
+.quotes-body {
+
+}
+
+.quotes-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  background: #333;
+  left: 0;
+  a {
+    display: inline-block;
+    color: #fff;
+    padding: 3px 10px;
+  }
 }

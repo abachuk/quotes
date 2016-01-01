@@ -100,6 +100,10 @@ QuotesNew = reduxForm({
   form: 'newQuote',
   fields,
   normalize: ['tags']
-})(QuotesNew)
+},
+  state => ({
+    initialValues: state.account.data // will pull state into form's initialValues
+  })
+)(QuotesNew)
 
 export default connect(mapStateToProps)(QuotesNew)

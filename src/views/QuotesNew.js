@@ -3,6 +3,7 @@ import 'styles/core.scss'
 import Firebase from 'firebase'
 import { connect } from 'react-redux'
 import constants from 'utils/constants'
+import { actions as quoteActions } from '../redux/modules/quote'
 import {reduxForm} from 'redux-form'
 
 const ref = new Firebase(constants.FIREBASE)
@@ -10,7 +11,8 @@ const quotesRef = ref.child('quotes')
 export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  quote: state.quote
 })
 
 export class QuotesNew extends React.Component {
@@ -20,7 +22,13 @@ export class QuotesNew extends React.Component {
     fields: React.PropTypes.object.isRequired,
     handleSubmit: React.PropTypes.func.isRequired,
     resetForm: React.PropTypes.func.isRequired,
-    submitting: React.PropTypes.bool.isRequired
+    submitting: React.PropTypes.bool.isRequired,
+    getQuote: React.PropTypes.func
+  }
+
+  componentDidMount () {
+    this.props.getQuote()
+    console.log(this.props)
   }
 
   handleFile (fieldName, e) {
@@ -106,4 +114,4 @@ QuotesNew = reduxForm({
   })
 )(QuotesNew)
 
-export default connect(mapStateToProps)(QuotesNew)
+export default connect(mapStateToProps, quoteActions)(QuotesNew)

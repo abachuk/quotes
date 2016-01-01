@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions'
 import Firebase from 'firebase'
 import constants from 'utils/constants'
 
-const ref = new Firebase(constants.FIREBASE + '/quotes')
+const ref = new Firebase(constants.FIREBASE + '/quotes/-K6UqF0zB78yKakEVdZj')
 let quote = {}
 
 // ------------------------------------
@@ -15,7 +15,8 @@ const FETCH_STARTED = 'FETCH_STARTED'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const fetch = () => {
+export const fetch = (id) => {
+  console.log(id)
   return (dispatch) => {
     ref.on('value', snapshot => dispatch({
       type: GET_QUOTE,
@@ -24,10 +25,10 @@ export const fetch = () => {
   }
 }
 
-export const getQuote = () => {
+export const getQuote = (id) => {
   return (dispatch) => {
     dispatch({ type: FETCH_STARTED })
-    dispatch(fetch())
+    dispatch(fetch(id))
   }
 }
 

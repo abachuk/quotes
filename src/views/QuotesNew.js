@@ -102,7 +102,7 @@ QuotesNew = reduxForm({
   normalize: ['tags']
 },
   state => ({
-    initialValues: state.account.data // will pull state into form's initialValues
+    initialValues: state.quote // will pull state into form's initialValues
   })
 )(QuotesNew)
 

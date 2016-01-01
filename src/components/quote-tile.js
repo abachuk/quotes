@@ -38,7 +38,7 @@ export class QuoteTile extends React.Component {
 
         <footer className={styles['quotes-footer']}>
           <Link to={`/quotes/${this.props.id}`}>View</Link>
-          <a href='#' onClick={this.editItem.bind(this)}>Edit</a>
+          <Link to={`/quotes/edit/${this.props.id}`}>Edit</Link>
           <a href='#' onClick={this.deleteItem.bind(this)}>Delete</a>
         </footer>
 

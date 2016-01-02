@@ -10,6 +10,7 @@ const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
 export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
 
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
   quote: state.quote
@@ -27,6 +28,7 @@ export class QuotesNew extends React.Component {
   }
 
   componentDidMount () {
+    let { query } = this.props.location
     this.props.getQuote()
     console.log(this)
   }

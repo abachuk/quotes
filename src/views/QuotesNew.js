@@ -28,7 +28,7 @@ export class QuotesNew extends React.Component {
 
   componentDidMount () {
     this.props.getQuote()
-    console.log(this.props)
+    console.log(this)
   }
 
   handleFile (fieldName, e) {
@@ -49,8 +49,8 @@ export class QuotesNew extends React.Component {
       category: fields.category ? fields.category.value : '',
       createdBy: userId,
       createdAt: new Date(),
-      tags: fields.tags ? fields.tags.value : [],
-      image: fields.image ? fields.image.value : ''
+      tags: fields.tags ? fields.tags.value : []
+      // image: fields.image ? fields.image.value : ''
     })
   }
 
@@ -97,7 +97,7 @@ export class QuotesNew extends React.Component {
           </div>
 
           <input type='submit' value='Create quote' className='btn btn-primary' />
-
+          <input type='button' value='Reset' className='btn btn-danger' onClick={resetForm} />
         </form>
       </div>
     )
@@ -110,7 +110,7 @@ QuotesNew = reduxForm({
   normalize: ['tags']
 },
   state => ({
-    initialValues: state.quote // will pull state into form's initialValues
+    // initialValues: state.quote // will pull state into form's initialValues
   })
 )(QuotesNew)
 

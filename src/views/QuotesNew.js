@@ -30,6 +30,7 @@ export class QuotesNew extends React.Component {
   componentDidMount () {
     let { query } = this.props.location
     this.props.getQuote()
+    console.log(this.props.route)
     console.log(this)
   }
 

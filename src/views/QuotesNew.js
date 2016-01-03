@@ -10,7 +10,6 @@ const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
 export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
 
-
 const mapStateToProps = (state) => ({
   auth: state.auth,
   quote: state.quote
@@ -24,12 +23,15 @@ export class QuotesNew extends React.Component {
     handleSubmit: React.PropTypes.func.isRequired,
     resetForm: React.PropTypes.func.isRequired,
     submitting: React.PropTypes.bool.isRequired,
-    getQuote: React.PropTypes.func
+    getQuote: React.PropTypes.func,
+    route: React.PropTypes.object
   }
 
   componentDidMount () {
-    let { query } = this.props.location
-    this.props.getQuote()
+    if (this.props.route.name === 'edit') {
+      this.props.getQuote()
+    }
+
     console.log(this.props.route)
     console.log(this)
   }

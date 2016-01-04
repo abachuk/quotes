@@ -24,7 +24,8 @@ export class QuotesNew extends React.Component {
     resetForm: React.PropTypes.func.isRequired,
     submitting: React.PropTypes.bool.isRequired,
     getQuote: React.PropTypes.func,
-    route: React.PropTypes.object
+    route: React.PropTypes.object,
+    statename: React.PropTypes.object
   }
 
   componentDidMount () {
@@ -66,6 +67,7 @@ export class QuotesNew extends React.Component {
       submitting
     } = this.props
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
+
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit.bind(this)}>

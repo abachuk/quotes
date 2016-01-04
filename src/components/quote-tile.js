@@ -29,6 +29,7 @@ export class QuoteTile extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <li className={styles['quotes-tile']}>
 

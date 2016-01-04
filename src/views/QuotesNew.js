@@ -65,11 +65,11 @@ export class QuotesNew extends React.Component {
       resetForm,
       submitting
     } = this.props
-
+    let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <h1>New Quote</h1>
+          <h1>{header}</h1>
 
           <div className='form-group'>
             <label forHtml='title'>Title</label>
@@ -114,9 +114,9 @@ QuotesNew = reduxForm({
   fields,
   normalize: ['tags']
 },
-  state => ({
-    // initialValues: state.quote // will pull state into form's initialValues
-  })
+state => ({
+  initialValues: state.quote
+})
 )(QuotesNew)
 
 export default connect(mapStateToProps, quoteActions)(QuotesNew)

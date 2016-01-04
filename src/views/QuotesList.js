@@ -21,7 +21,6 @@ export class QuotesList extends React.Component {
 
   componentDidMount () {
     this.props.getQuotes()
-    console.log(this.props)
   }
 
   render () {

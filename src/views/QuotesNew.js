@@ -30,7 +30,7 @@ export class QuotesNew extends React.Component {
 
   componentDidMount (state) {
     if (this.props.route.name === 'edit') {
-      this.props.getQuote()
+      this.props.getQuote(this.props.params.id)
     }
     this.state = this.props.route
     console.log(this.props.route)

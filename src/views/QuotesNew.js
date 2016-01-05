@@ -28,11 +28,11 @@ export class QuotesNew extends React.Component {
     statename: React.PropTypes.object
   }
 
-  componentDidMount () {
+  componentDidMount (state) {
     if (this.props.route.name === 'edit') {
       this.props.getQuote()
     }
-
+    this.state = this.props.route
     console.log(this.props.route)
     console.log(this)
   }
@@ -116,9 +116,12 @@ QuotesNew = reduxForm({
   fields,
   normalize: ['tags']
 },
-state => ({
-  initialValues: state.quote
-})
+function (state, props) {
+  // console.log(props)
+  if (props.route.name === 'edit') {
+    return {initialValues: state.quote}
+  }
+}
 )(QuotesNew)
 
 export default connect(mapStateToProps, quoteActions)(QuotesNew)

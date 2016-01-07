@@ -10,9 +10,9 @@ const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
 export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
   auth: state.auth,
-  quote: state.quote
+  quote: props.route.name === 'edit' ? state.quote : ''
 })
 
 export class QuotesNew extends React.Component {
@@ -32,9 +32,9 @@ export class QuotesNew extends React.Component {
     if (this.props.route.name === 'edit') {
       this.props.getQuote(this.props.params.id)
     }
-    this.state = this.props.route
-    console.log(this.props.route)
-    console.log(this)
+    //this.state = this.props.route
+    //console.log(this.props.route)
+    //console.log(this)
   }
 
   handleFile (fieldName, e) {
@@ -117,9 +117,10 @@ QuotesNew = reduxForm({
   normalize: ['tags']
 },
 function (state, props) {
-  // console.log(props)
   if (props.route.name === 'edit') {
     return {initialValues: state.quote}
+  } else {
+    console.log(state)
   }
 }
 )(QuotesNew)

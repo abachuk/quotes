@@ -25,12 +25,15 @@ export class QuotesNew extends React.Component {
     submitting: React.PropTypes.bool.isRequired,
     getQuote: React.PropTypes.func,
     route: React.PropTypes.object,
-    statename: React.PropTypes.object
+    statename: React.PropTypes.object,
+    clearQuote: React.PropTypes.func
   }
 
   componentDidMount (state) {
     if (this.props.route.name === 'edit') {
       this.props.getQuote(this.props.params.id)
+    } else {
+      this.props.clearQuote()
     }
     //this.state = this.props.route
     //console.log(this.props.route)

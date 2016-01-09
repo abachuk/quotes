@@ -3,7 +3,6 @@ import { handleActions } from 'redux-actions'
 import Firebase from 'firebase'
 import constants from 'utils/constants'
 
-
 let quote = {}
 
 // ------------------------------------
@@ -32,6 +31,10 @@ export const getQuote = (id) => {
   }
 }
 
+export const clearQuote = () => {
+  return {}
+}
+
 function dataFromSnapshot (snapshot) {
   let data = snapshot.val()
   return data
@@ -39,7 +42,8 @@ function dataFromSnapshot (snapshot) {
 
 export const actions = {
   fetch,
-  getQuote
+  getQuote,
+  clearQuote
 }
 
 // ------------------------------------

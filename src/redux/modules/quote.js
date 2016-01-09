@@ -9,6 +9,7 @@ let quote = {}
 // Constants
 // ------------------------------------
 const GET_QUOTE = 'GET_QUOTES'
+const CLEAR_QUOTE = 'CLEAR_QUOTE'
 const FETCH_STARTED = 'FETCH_STARTED'
 
 // ------------------------------------
@@ -32,7 +33,12 @@ export const getQuote = (id) => {
 }
 
 export const clearQuote = () => {
-  return {}
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_QUOTE,
+      payload: {}
+    })
+  }
 }
 
 function dataFromSnapshot (snapshot) {
@@ -50,5 +56,6 @@ export const actions = {
 // Reducer
 // ------------------------------------
 export default handleActions({
-  [GET_QUOTE]: (state, { payload }) => payload
+  [GET_QUOTE]: (state, { payload }) => payload,
+  [CLEAR_QUOTE]: (state, { payload }) => payload
 }, quote)

@@ -16,7 +16,6 @@ const ref = new Firebase(constants.FIREBASE)
 let authData = ref.getAuth()
 
 function requireAuth (nextState, replaceState) {
-  console.log(authData)
   if (!authData) {
     replaceState({ nextPathname: nextState.location.pathname }, '/login')
   } else {

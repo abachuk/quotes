@@ -26,28 +26,23 @@ export class QuotesNew extends React.Component {
     getQuote: React.PropTypes.func,
     route: React.PropTypes.object,
     statename: React.PropTypes.object,
-    clearQuote: React.PropTypes.func
+    clearQuote: React.PropTypes.func,
+    params: React.PropTypes.object
   }
 
   componentDidMount (state) {
     if (this.props.route.name === 'edit') {
       this.props.getQuote(this.props.params.id)
-    } else {
-      this.props.clearQuote()
     }
-    //this.state = this.props.route
-    //console.log(this.props.route)
-    //console.log(this)
   }
 
   handleFile (fieldName, e) {
     e.preventDefault()
-    console.log(this)
   }
 
   handleSubmit (e) {
     e.preventDefault()
-    console.log(this.props.fields)
+    // console.log(this.props.fields)
     let fields = this.props.fields
     let userId = this.props.auth.uid
 
@@ -122,8 +117,6 @@ QuotesNew = reduxForm({
 function (state, props) {
   if (props.route.name === 'edit') {
     return {initialValues: state.quote}
-  } else {
-    console.log(state)
   }
 }
 )(QuotesNew)

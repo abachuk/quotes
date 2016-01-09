@@ -33,6 +33,7 @@ export const getQuote = (id) => {
 }
 
 export const clearQuote = () => {
+  console.log('calling clearQuote')
   return (dispatch) => {
     dispatch({
       type: CLEAR_QUOTE,

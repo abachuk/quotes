@@ -65,6 +65,7 @@ export class QuotesNew extends React.Component {
       submitting
     } = this.props
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
+    let btnLabel = this.props.route.name === 'edit' ? 'Update the quote' : 'Create new quote'
 
     return (
       <div className='container'>
@@ -101,7 +102,7 @@ export class QuotesNew extends React.Component {
             <input type='file' className='form-control' id='image' onChange={this.handleFile.bind(this, 'image')} placeholder='background image' ref='image' {...image} />
           </div>
 
-          <input type='submit' value='Create quote' className='btn btn-primary' />
+          <input type='submit' value={btnLabel} className='btn btn-primary' />
           <input type='button' value='Reset' className='btn btn-danger' onClick={resetForm} />
         </form>
       </div>

@@ -5,11 +5,6 @@ import constants from 'utils/constants'
 import { actions as authActions } from '../redux/modules/auth'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-// import { createHistory } from 'history'
-// import { pushPath } from 'redux-simple-router'
-
-// let history = createHistory()
-// import { history } from 'react-router'
 
 const ref = new Firebase(constants.FIREBASE)
 // let auth = ref.getAuth()
@@ -42,8 +37,8 @@ export class LoginView extends React.Component {
       } else {
         console.log(self)
         console.log('Authenticated successfully with payload:', authData)
-        self.props.history.pushState(null, '/')
         self.props.login(authData)
+        self.props.history.pushState(null, '/profile')
       }
     })
   }

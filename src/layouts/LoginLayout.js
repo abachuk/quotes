@@ -9,7 +9,7 @@ export default class LoginLayout extends React.Component {
   render () {
     return (
       <div className={styles['login-container']}>
-        <div className={styles['login-forms']}>
+        <div className={styles['login-forms']} history={this.props.children.props.history} >
           {this.props.children}
         </div>
       </div>

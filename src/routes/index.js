@@ -41,8 +41,8 @@ export default (
 
     <Route component={QuotesSingle} path='/quotes/view/:id' />
     <Route component={QuotesNew} name='edit' path='/quotes/edit/:id' />
-    <Route component={QuotesList} name='new' path='/quotes/all' />
-    <Route component={QuotesNew} path='/quotes/new' />
+    <Route component={QuotesList} path='/quotes/all' />
+    <Route component={QuotesNew} name='new' path='/quotes/new' />
 
     <Route component={ProfileView} path='/profile' />
   </Route>

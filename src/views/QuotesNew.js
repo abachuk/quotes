@@ -42,20 +42,23 @@ export class QuotesNew extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    // console.log(this.props.fields)
+
     let fields = this.props.fields
     let userId = this.props.auth.uid
+    console.log(this)
 
-    quotesRef.push({
-      title: fields.title ? fields.title.value : '',
-      text: fields.description ? fields.description.value : '',
-      author: fields.author ? fields.author.value : '',
-      category: fields.category ? fields.category.value : '',
-      createdBy: userId,
-      createdAt: new Date(),
-      tags: fields.tags ? fields.tags.value : []
-      // image: fields.image ? fields.image.value : ''
-    })
+    if (this.props.route.name === 'new') {
+      quotesRef.push({
+        title: fields.title ? fields.title.value : '',
+        text: fields.description ? fields.description.value : '',
+        author: fields.author ? fields.author.value : '',
+        category: fields.category ? fields.category.value : '',
+        createdBy: userId,
+        createdAt: new Date(),
+        tags: fields.tags ? fields.tags.value : []
+        // image: fields.image ? fields.image.value : ''
+      })
+    }
   }
 
   updateQuote (e) {
@@ -72,7 +75,6 @@ export class QuotesNew extends React.Component {
 
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
     let btnLabel = this.props.route.name === 'edit' ? 'Update the quote' : 'Create new quote'
-    let formAction = this.props.route.name === 'edit' ? () => this.handleSubmit.bind(this) : ''
 
     return (
       <div className='container'>

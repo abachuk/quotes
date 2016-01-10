@@ -58,14 +58,21 @@ export class QuotesNew extends React.Component {
     })
   }
 
+  updateQuote (e) {
+    let currentQuote = quotesRef.child(this.props.params.id)
+    console.log(currentQuote)
+  }
+
   render () {
     const {
       fields: {title, description, author, tags, category, image},
       resetForm,
       submitting
     } = this.props
+
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
     let btnLabel = this.props.route.name === 'edit' ? 'Update the quote' : 'Create new quote'
+    let formAction = this.props.route.name === 'edit' ? () => this.handleSubmit.bind(this) : ''
 
     return (
       <div className='container'>

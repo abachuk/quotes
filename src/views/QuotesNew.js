@@ -37,7 +37,14 @@ export class QuotesNew extends React.Component {
   }
 
   handleFile (fieldName, e) {
+    console.log(e)
     e.preventDefault()
+    console.log(fieldName)
+    //let fields = this.props.fields
+    // convert files to an array
+    //const files = [ ...e.target.files ];
+    //fields[fieldName].handleChange(files);
+
   }
 
   handleSubmit (e) {
@@ -75,6 +82,9 @@ export class QuotesNew extends React.Component {
 
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
     let btnLabel = this.props.route.name === 'edit' ? 'Update the quote' : 'Create new quote'
+    // const { fields: { image } } = this.props;
+    // pull out value so it isn't passed into the file input
+    let { value, ...imageProps } = image;
 
     return (
       <div className='container'>

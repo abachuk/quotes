@@ -1,9 +1,22 @@
 import React from 'react'
 import styles from '../styles/LoginStyles.scss'
+import { connect } from 'react-redux'
 
-export default class LoginLayout extends React.Component {
+const mapStateToProps = (state, props) => ({
+  auth: state.auth
+})
+
+export class LoginLayout extends React.Component {
+
   static propTypes = {
     children: React.PropTypes.element
+  }
+
+  componentDidMount () {
+    if(this.props.auth) {
+      
+    }
+    console.log(this)
   }
 
   render () {
@@ -16,3 +29,5 @@ export default class LoginLayout extends React.Component {
     )
   }
 }
+
+export default connect(mapStateToProps)(LoginLayout)

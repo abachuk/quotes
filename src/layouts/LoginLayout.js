@@ -9,12 +9,15 @@ const mapStateToProps = (state, props) => ({
 export class LoginLayout extends React.Component {
 
   static propTypes = {
-    children: React.PropTypes.element
+    children: React.PropTypes.element,
+    history: React.PropTypes.object,
+    login: React.PropTypes.func,
+    auth: React.PropTypes.object
   }
 
   componentDidMount () {
-    if(this.props.auth) {
-      
+    if (this.props.auth) {
+      this.props.history.pushState(null, '/profile')
     }
     console.log(this)
   }

@@ -52,20 +52,32 @@ export class QuotesNew extends React.Component {
 
     let fields = this.props.fields
     let userId = this.props.auth.uid
-    console.log(this)
+    let image = fields.image.value[0]
+    let imageBase64
 
-    if (this.props.route.name === 'new') {
-      quotesRef.push({
-        title: fields.title ? fields.title.value : '',
-        text: fields.description ? fields.description.value : '',
-        author: fields.author ? fields.author.value : '',
-        category: fields.category ? fields.category.value : '',
-        createdBy: userId,
-        createdAt: new Date(),
-        tags: fields.tags ? fields.tags.value : []
-        // image: fields.image ? fields.image.value : ''
-      })
-    }
+    let fr = new FileReader()
+    fr.onloadend = function (res) {
+      console.log(res)
+      imageBase64 = res.currentTarget.result
+
+      if (this.props.route.name === 'new') {
+        quotesRef.push({
+          title: fields.title ? fields.title.value : '',
+          text: fields.description ? fields.description.value : '',
+          author: fields.author ? fields.author.value : '',
+          category: fields.category ? fields.category.value : '',
+          createdBy: userId,
+          createdAt: new Date(),
+          tags: fields.tags ? fields.tags.value : [],
+          image: fields.image ? imageBase64 : ''
+        })
+      }
+
+    }.bind(this)
+    fr.readAsDataURL(image)
+
+    //return
+
   }
 
   updateQuote (e) {
@@ -118,7 +130,7 @@ export class QuotesNew extends React.Component {
 
           <div className='form-group'>
             <label forHtml='image'>Background</label>
-            <input type='file' className='form-control' id='image' onChange={this.handleFile.bind(this, 'image')} placeholder='background image' ref='image' {...image} />
+            <input type='file' className='form-control' id='image' onChange={this.handleFile.bind(this, 'image')} placeholder='background image' ref='image' {...image} value={null} />
           </div>
 
           <input type='submit' value={btnLabel} className='btn btn-primary' />

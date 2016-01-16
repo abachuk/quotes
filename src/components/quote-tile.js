@@ -35,6 +35,7 @@ export class QuoteTile extends React.Component {
 
         <div className={styles['quotes-body']}>
           {this.props.quote.text}
+          <img src={this.props.quote.image} />
         </div>
 
         <footer className={styles['quotes-footer']}>

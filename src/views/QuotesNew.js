@@ -52,10 +52,10 @@ export class QuotesNew extends React.Component {
 
     let fields = this.props.fields
     let userId = this.props.auth.uid
-    let image = fields.image.value[0]
+    let image = _.first(fields.image.value)
     let imageBase64
-
     let fr = new FileReader()
+
     fr.onloadend = function (res) {
       console.log(res)
       imageBase64 = res.currentTarget.result
@@ -71,12 +71,12 @@ export class QuotesNew extends React.Component {
           tags: fields.tags ? fields.tags.value : [],
           image: fields.image ? imageBase64 : ''
         })
+      } else {
+        console.log('edit')
       }
 
     }.bind(this)
     fr.readAsDataURL(image)
-
-    //return
 
   }
 

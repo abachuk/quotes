@@ -30,12 +30,16 @@ export class QuoteTile extends React.Component {
 
   render () {
     console.log(this.props)
+
+    var bgImage = {
+        backgroundImage: 'url('+this.props.quote.image+')'
+    }
+
     return (
-      <li className={styles['quotes-tile']}>
+      <li className={styles['quotes-tile']} style={bgImage}>
 
         <div className={styles['quotes-body']}>
           {this.props.quote.text}
-          <img src={this.props.quote.image} />
         </div>
 
         <footer className={styles['quotes-footer']}>

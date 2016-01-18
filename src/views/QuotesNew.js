@@ -8,7 +8,7 @@ import {reduxForm} from 'redux-form'
 
 const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
-export const fields = ['title', 'text', 'author', 'tags', 'category', 'image']
+export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
 
 const mapStateToProps = (state, props) => ({
   auth: state.auth,
@@ -63,7 +63,7 @@ export class QuotesNew extends React.Component {
 
       quote = {
         title: fields.title ? fields.title.value : '',
-        text: fields.text ? fields.text.value : '',
+        description: fields.description ? fields.description.value : '',
         author: fields.author ? fields.author.value : '',
         category: fields.category ? fields.category.value : '',
         createdBy: userId,
@@ -94,7 +94,7 @@ export class QuotesNew extends React.Component {
 
   render () {
     const {
-      fields: {title, text, author, tags, category, image},
+      fields: {title, description, author, tags, category, image},
       resetForm,
       submitting
     } = this.props
@@ -118,8 +118,8 @@ export class QuotesNew extends React.Component {
           </div>
 
           <div className='form-group'>
-            <label forHtml='text'>Description</label>
-            <textarea className='form-control' rows='4' id='text' ref='text' placeholder='text or descriptions' {...text} />
+            <label forHtml='description'>Description</label>
+            <textarea className='form-control' rows='4' id='description' ref='description' placeholder='text or descriptions' {...description} />
           </div>
 
           <div className='form-group'>

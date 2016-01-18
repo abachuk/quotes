@@ -39,7 +39,7 @@ export class QuoteTile extends React.Component {
       <li className={styles['quotes-tile']} style={bgImage}>
 
         <div className={styles['quotes-body']}>
-          {this.props.quote.text}
+          {this.props.quote.text || this.props.quote.description}
         </div>
 
         <footer className={styles['quotes-footer']}>

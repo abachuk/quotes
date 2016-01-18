@@ -55,26 +55,31 @@ export class QuotesNew extends React.Component {
     let image = _.first(fields.image.value)
     let imageBase64
     let fr = new FileReader()
+    let quote
 
     fr.onloadend = function (res) {
       console.log(res)
       imageBase64 = res.currentTarget.result
 
+      quote = {
+        title: fields.title ? fields.title.value : '',
+        text: fields.description ? fields.description.value : '',
+        author: fields.author ? fields.author.value : '',
+        category: fields.category ? fields.category.value : '',
+        createdBy: userId,
+        createdAt: new Date(),
+        tags: fields.tags ? fields.tags.value : [],
+        image: fields.image ? imageBase64 : ''
+      }
+
       if (this.props.route.name === 'new') {
-        quotesRef.push({
-          title: fields.title ? fields.title.value : '',
-          text: fields.description ? fields.description.value : '',
-          author: fields.author ? fields.author.value : '',
-          category: fields.category ? fields.category.value : '',
-          createdBy: userId,
-          createdAt: new Date(),
-          tags: fields.tags ? fields.tags.value : [],
-          image: fields.image ? imageBase64 : ''
-        })
+        quotesRef.push(quote)
       } else {
         let quoteId = this.props.params.id
         let currentQuote = ref.child('quotes/'+quoteId)
-        
+
+        currentQuote.update(quote)
+
       }
 
     }.bind(this)

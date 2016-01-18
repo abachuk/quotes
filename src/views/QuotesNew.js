@@ -72,7 +72,9 @@ export class QuotesNew extends React.Component {
           image: fields.image ? imageBase64 : ''
         })
       } else {
-        console.log('edit')
+        let quoteId = this.props.params.id
+        let currentQuote = ref.child('quotes/'+quoteId)
+        
       }
 
     }.bind(this)

@@ -8,7 +8,7 @@ import {reduxForm} from 'redux-form'
 
 const ref = new Firebase(constants.FIREBASE)
 const quotesRef = ref.child('quotes')
-export const fields = ['title', 'description', 'author', 'tags', 'category', 'image']
+export const fields = ['title', 'text', 'author', 'tags', 'category', 'image']
 
 const mapStateToProps = (state, props) => ({
   auth: state.auth,
@@ -63,7 +63,7 @@ export class QuotesNew extends React.Component {
 
       quote = {
         title: fields.title ? fields.title.value : '',
-        text: fields.description ? fields.description.value : '',
+        text: fields.text ? fields.text.value : '',
         author: fields.author ? fields.author.value : '',
         category: fields.category ? fields.category.value : '',
         createdBy: userId,
@@ -94,13 +94,15 @@ export class QuotesNew extends React.Component {
 
   render () {
     const {
-      fields: {title, description, author, tags, category, image},
+      fields: {title, text, author, tags, category, image},
       resetForm,
       submitting
     } = this.props
 
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
     let btnLabel = this.props.route.name === 'edit' ? 'Update the quote' : 'Create new quote'
+    // console.log(this.props.fields.description)
+    console.log(this.props.fields)
     // const { fields: { image } } = this.props;
     // pull out value so it isn't passed into the file input
     let { value, ...imageProps } = image;
@@ -116,8 +118,8 @@ export class QuotesNew extends React.Component {
           </div>
 
           <div className='form-group'>
-            <label forHtml='description'>Description</label>
-            <textarea className='form-control' rows='4' id='description' ref='description' placeholder='text or description' {...description} />
+            <label forHtml='text'>Description</label>
+            <textarea className='form-control' rows='4' id='text' ref='text' placeholder='text or descriptions' {...text} />
           </div>
 
           <div className='form-group'>

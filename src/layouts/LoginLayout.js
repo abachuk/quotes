@@ -18,7 +18,7 @@ export class LoginLayout extends React.Component {
     children: React.PropTypes.element,
     history: React.PropTypes.object,
     login: React.PropTypes.func,
-    auth: React.PropTypes.object
+    auth: React.PropTypes.string
   }
 
   componentDidMount () {

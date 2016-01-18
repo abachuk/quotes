@@ -32,13 +32,13 @@ export class LoginView extends React.Component {
       'email': email,
       'password': password
     }, function (error, authData) {
-      if (error) {
-        console.log('Login Failed!', error)
-      } else {
-        console.log(self)
+      if (!error) {
+        self.props.history.pushState(null, '/profile')
         console.log('Authenticated successfully with payload:', authData)
         self.props.login(authData)
-        self.props.history.pushState(null, '/profile')
+      } else {
+        console.log('Login Failed!', error)
+        console.log(self)
       }
     })
   }

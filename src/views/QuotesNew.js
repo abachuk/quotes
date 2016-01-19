@@ -55,35 +55,37 @@ export class QuotesNew extends React.Component {
     let image = _.first(fields.image.value)
     let imageBase64
     let fr = new FileReader()
-    let quote
+    let quote = {
+      title: fields.title ? fields.title.value : '',
+      description: fields.description ? fields.description.value : '',
+      author: fields.author ? fields.author.value : '',
+      category: fields.category ? fields.category.value : '',
+      createdBy: userId,
+      createdAt: new Date(),
+      tags: fields.tags ? fields.tags.value : []
+    }
 
-    fr.onloadend = function (res) {
-      console.log(res)
-      imageBase64 = res.currentTarget.result
-
-      quote = {
-        title: fields.title ? fields.title.value : '',
-        description: fields.description ? fields.description.value : '',
-        author: fields.author ? fields.author.value : '',
-        category: fields.category ? fields.category.value : '',
-        createdBy: userId,
-        createdAt: new Date(),
-        tags: fields.tags ? fields.tags.value : [],
-        image: fields.image ? imageBase64 : ''
-      }
-
+    let pushToFirebase = function() {
       if (this.props.route.name === 'new') {
         quotesRef.push(quote)
       } else {
         let quoteId = this.props.params.id
         let currentQuote = ref.child('quotes/'+quoteId)
-
         currentQuote.update(quote)
-
       }
-
     }.bind(this)
-    fr.readAsDataURL(image)
+
+    if(image) {
+      fr.onloadend = function (res) {
+        imageBase64 = res.currentTarget.result
+        quote.image = imageBase64
+        pushToFirebase()
+      }.bind(this)
+
+      fr.readAsDataURL(image)
+    } else {
+      pushToFirebase()
+    }
 
   }
 
@@ -105,7 +107,7 @@ export class QuotesNew extends React.Component {
     console.log(this.props.fields)
     // const { fields: { image } } = this.props;
     // pull out value so it isn't passed into the file input
-    let { value, ...imageProps } = image;
+    let { value, ...imageProps } = image
 
     return (
       <div className='container'>

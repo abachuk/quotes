@@ -58,10 +58,10 @@ export class QuotesNew extends React.Component {
     let onComplete = function(error) {
       if(error) {
         alert('there was an error')
-      } else {
-        this.props.history.pushState(null, '/list')
+      } else {        
+        this.props.history.pushState(null, '/quotes/all')
       }
-    }
+    }.bind(this)
 
     let pushToFirebase = function() {
       if (this.props.route.name === 'new') {
@@ -73,7 +73,7 @@ export class QuotesNew extends React.Component {
       }
     }.bind(this)
 
-    if(image) {
+    if(image && image.name) {
       fr.onloadend = function (res) {
         imageBase64 = res.currentTarget.result
         quote.image = imageBase64

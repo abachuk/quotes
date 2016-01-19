@@ -38,6 +38,10 @@ export class QuoteTile extends React.Component {
     return (
       <li className={styles['quotes-tile']} style={bgImage}>
 
+        <header className={styles['quote-header']}>
+          ~ {this.props.quote.author}
+        </header>
+
         <div className={styles['quotes-body']}>
           {this.props.quote.text || this.props.quote.description}
         </div>

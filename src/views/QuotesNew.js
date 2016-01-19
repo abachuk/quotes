@@ -27,24 +27,14 @@ export class QuotesNew extends React.Component {
     route: React.PropTypes.object,
     statename: React.PropTypes.object,
     clearQuote: React.PropTypes.func,
-    params: React.PropTypes.object
+    params: React.PropTypes.object,
+    history: React.PropTypes.object
   }
 
   componentDidMount (state) {
     if (this.props.route.name === 'edit') {
       this.props.getQuote(this.props.params.id)
     }
-  }
-
-  handleFile (fieldName, e) {
-    console.log(e)
-    e.preventDefault()
-    console.log(fieldName)
-    //let fields = this.props.fields
-    // convert files to an array
-    //const files = [ ...e.target.files ];
-    //fields[fieldName].handleChange(files);
-
   }
 
   handleSubmit (e) {
@@ -65,13 +55,21 @@ export class QuotesNew extends React.Component {
       tags: fields.tags ? fields.tags.value : []
     }
 
+    let onComplete = function(error) {
+      if(error) {
+        alert('there was an error')
+      } else {
+        this.props.history.pushState(null, '/list')
+      }
+    }
+
     let pushToFirebase = function() {
       if (this.props.route.name === 'new') {
         quotesRef.push(quote)
       } else {
         let quoteId = this.props.params.id
         let currentQuote = ref.child('quotes/'+quoteId)
-        currentQuote.update(quote)
+        currentQuote.update(quote, onComplete)
       }
     }.bind(this)
 
@@ -141,7 +139,7 @@ export class QuotesNew extends React.Component {
 
           <div className='form-group'>
             <label forHtml='image'>Background</label>
-            <input type='file' className='form-control' id='image' onChange={this.handleFile.bind(this, 'image')} placeholder='background image' ref='image' {...image} value={null} />
+            <input type='file' className='form-control' id='image' placeholder='background image' ref='image' {...image} value={null} />
           </div>
 
           <input type='submit' value={btnLabel} className='btn btn-primary' />

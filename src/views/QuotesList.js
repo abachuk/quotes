@@ -1,6 +1,5 @@
 import React from 'react'
 import 'styles/core.scss'
-import { Link } from 'react-router'
 import { actions as quoteActions } from '../redux/modules/getquotes'
 import { connect } from 'react-redux'
 import _ from 'lodash'

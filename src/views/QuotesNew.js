@@ -58,7 +58,7 @@ export class QuotesNew extends React.Component {
     let onComplete = function(error) {
       if(error) {
         alert('there was an error')
-      } else {        
+      } else {
         this.props.history.pushState(null, '/quotes/all')
       }
     }.bind(this)
@@ -101,10 +101,6 @@ export class QuotesNew extends React.Component {
 
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'
     let btnLabel = this.props.route.name === 'edit' ? 'Update the quote' : 'Create new quote'
-    // console.log(this.props.fields.description)
-    console.log(this.props.fields)
-    // const { fields: { image } } = this.props;
-    // pull out value so it isn't passed into the file input
     let { value, ...imageProps } = image
 
     return (

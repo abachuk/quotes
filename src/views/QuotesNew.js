@@ -55,25 +55,25 @@ export class QuotesNew extends React.Component {
       tags: fields.tags ? fields.tags.value : []
     }
 
-    let onComplete = function(error) {
-      if(error) {
+    let onComplete = function (error) {
+      if (error) {
         alert('there was an error')
       } else {
         this.props.history.pushState(null, '/quotes/all')
       }
     }.bind(this)
 
-    let pushToFirebase = function() {
+    let pushToFirebase = function () {
       if (this.props.route.name === 'new') {
         quotesRef.push(quote)
       } else {
         let quoteId = this.props.params.id
-        let currentQuote = ref.child('quotes/'+quoteId)
+        let currentQuote = ref.child('quotes/' + quoteId)
         currentQuote.update(quote, onComplete)
       }
     }.bind(this)
 
-    if(image && image.name) {
+    if (image && image.name) {
       fr.onloadend = function (res) {
         imageBase64 = res.currentTarget.result
         quote.image = imageBase64
@@ -84,7 +84,6 @@ export class QuotesNew extends React.Component {
     } else {
       pushToFirebase()
     }
-
   }
 
   updateQuote (e) {
@@ -95,8 +94,7 @@ export class QuotesNew extends React.Component {
   render () {
     const {
       fields: {title, description, author, tags, category, image},
-      resetForm,
-      submitting
+      resetForm
     } = this.props
 
     let header = this.props.route.name === 'edit' ? 'Edit quote' : 'New Quote'

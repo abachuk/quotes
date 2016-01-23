@@ -2,7 +2,7 @@ import React from 'react'
 import 'styles/core.scss'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-import styles from '../styles/QuotesListStyles.scss'
+import styles from '../styles/SingleQuote.scss'
 import { actions as quoteActions } from '../redux/modules/quote'
 
 const mapStateToProps = (state) => ({
@@ -24,8 +24,8 @@ export class QuotesSingle extends React.Component {
 
   render () {
     return (
-      <div className={styles['single-quote-container']}>
-
+      <div className='col-md-6'>
+        Yo
       </div>
     )
   }

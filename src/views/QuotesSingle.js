@@ -7,15 +7,15 @@ import styles from '../styles/QuotesListStyles.scss'
 import QuoteTile from '../components/quote-tile'
 
 const mapStateToProps = (state) => ({
-  quotes: state.quotes
+  quote: state.quote
 })
 
 export class QuotesSingle extends React.Component {
 
   static propTypes = {
-    quotes: React.PropTypes.object,
     fetch: React.PropTypes.func,
-    getQuotes: React.PropTypes.func
+    getQuote: React.PropTypes.func,
+    params: React.PropTypes.object
   }
 
   componentDidMount () {

@@ -1,10 +1,9 @@
 import React from 'react'
 import 'styles/core.scss'
-import { actions as quoteActions } from '../redux/modules/getquotes'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import styles from '../styles/QuotesListStyles.scss'
-import QuoteTile from '../components/quote-tile'
+import { actions as quoteActions } from '../redux/modules/quote'
 
 const mapStateToProps = (state) => ({
   quote: state.quote
@@ -19,18 +18,14 @@ export class QuotesSingle extends React.Component {
   }
 
   componentDidMount () {
-    this.props.getQuotes()
+    this.props.getQuote(this.props.params.id)
     console.log(this.props)
   }
 
   render () {
     return (
-      <div className={styles['quotes-container']}>
-        <ul className={styles['quotes-list']}>
-          {_.map(this.props.quotes, function (val, key) {
-            return <QuoteTile quote={val} key={key} id={key} />
-          })}
-        </ul>
+      <div className={styles['single-quote-container']}>
+
       </div>
     )
   }

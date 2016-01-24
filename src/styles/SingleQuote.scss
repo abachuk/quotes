@@ -1,3 +1,6 @@
 .single-quote-container {
-    
+    background: #ccc;
+    composes: col-md-6 from './vendor/bootstrap/bootstrap.css';
+    composes: col-md-offset-3 from './vendor/bootstrap/bootstrap.css';
+    composes: text-center from './vendor/bootstrap/bootstrap.css';    
 }

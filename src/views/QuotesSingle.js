@@ -25,8 +25,10 @@ export class QuotesSingle extends React.Component {
 
   render () {
     return (
+      <div className='row'>
       <div className={styles['single-quote-container']}>
         {this.props.quote.description || this.props.quote.text}
+      </div>
       </div>
     )
   }

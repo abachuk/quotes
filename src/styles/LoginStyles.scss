@@ -1,7 +1,7 @@
 .login-container {
   display: flex;
   align-items: center;
-  composes: page-container from '../styles/vendor/bootstrap.css';
+  composes: page-container from '../styles/vendor/bootstrap/bootstrap.css';
   justify-content: space-around;
   -webkit-align-items: center;
 	-webkit-box-align: center;

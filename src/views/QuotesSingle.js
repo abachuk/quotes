@@ -24,7 +24,7 @@ export class QuotesSingle extends React.Component {
 
   render () {
     return (
-      <div className='col-md-6'>
+      <div className={styles['single-quote-container']}>
         Yo
       </div>
     )

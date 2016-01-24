@@ -14,7 +14,8 @@ export class QuotesSingle extends React.Component {
   static propTypes = {
     fetch: React.PropTypes.func,
     getQuote: React.PropTypes.func,
-    params: React.PropTypes.object
+    params: React.PropTypes.object,
+    quote: React.PropTypes.object
   }
 
   componentDidMount () {
@@ -25,7 +26,7 @@ export class QuotesSingle extends React.Component {
   render () {
     return (
       <div className={styles['single-quote-container']}>
-        Yo
+        {this.props.quote.description || this.props.quote.text}
       </div>
     )
   }

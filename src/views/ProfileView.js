@@ -4,6 +4,10 @@ import {reduxForm} from 'redux-form'
 
 export const fields = ['name', 'bio', 'photo']
 
+const mapStateToProps = (state, props) => ({
+  auth: state.auth
+})
+
 export class ProfileView extends React.Component {
 
   handleSubmit (e) {
@@ -11,6 +15,12 @@ export class ProfileView extends React.Component {
   }
 
   render () {
+
+    const {
+      fields: {name, bio, photo},
+      resetForm
+    } = this.props
+
     return (
       <div className='container'>
       <h1>My profile</h1>
@@ -19,7 +29,7 @@ export class ProfileView extends React.Component {
 
           <div className='form-group'>
             <label forHtml='name'>Name</label>
-            <input type='text' className='form-control' id='title' placeholder='Name' ref='name' {...name} />
+            <input type='text' className='form-control' id='name' placeholder='Name' ref='name' {...name} />
           </div>
 
           <div className='form-group'>
@@ -32,7 +42,7 @@ export class ProfileView extends React.Component {
             <input type='file' className='form-control' id='photo' placeholder='photo' ref='photo' {...photo} value={null} />
           </div>
 
-          <input type='submit' value={btnLabel} className='btn btn-primary' />
+          <input type='submit' value='Update' className='btn btn-primary' />
           <input type='button' value='Reset' className='btn btn-danger' onClick={resetForm} />
         </form>
       </div>

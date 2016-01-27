@@ -1,5 +1,8 @@
 import React from 'react'
 import 'styles/core.scss'
+import {reduxForm} from 'redux-form'
+
+export const fields = ['name', 'bio', 'photo']
 
 export class ProfileView extends React.Component {
   render () {

@@ -11,12 +11,12 @@ export class ProfileView extends React.Component {
 
           <div className='form-group'>
             <label forHtml='title'>Name</label>
-            <input type='text' className='form-control' id='title' placeholder='Name' ref='title' {...title} />
+            <input type='text' className='form-control' id='title' placeholder='Name' ref='name' {...name} />
           </div>
 
           <div className='form-group'>
-            <label forHtml='description'>Description</label>
-            <textarea className='form-control' rows='4' id='description' ref='description' placeholder='text or descriptions' {...description} />
+            <label forHtml='description'>Short Bio</label>
+            <textarea className='form-control' rows='4' id='bio' ref='bio' placeholder='short bio' {...bio} />
           </div>
 
           <div className='form-group'>

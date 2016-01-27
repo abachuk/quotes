@@ -5,6 +5,11 @@ import {reduxForm} from 'redux-form'
 export const fields = ['name', 'bio', 'photo']
 
 export class ProfileView extends React.Component {
+
+  handleSubmit (e) {
+
+  }
+
   render () {
     return (
       <div className='container'>
@@ -34,5 +39,10 @@ export class ProfileView extends React.Component {
     )
   }
 }
+
+ProfileView = reduxForm({
+  form: 'profileForm',
+  fields
+})(ProfileView)
 
 export default ProfileView

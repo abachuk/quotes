@@ -10,33 +10,18 @@ export class ProfileView extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
 
           <div className='form-group'>
-            <label forHtml='title'>Name</label>
+            <label forHtml='name'>Name</label>
             <input type='text' className='form-control' id='title' placeholder='Name' ref='name' {...name} />
           </div>
 
           <div className='form-group'>
-            <label forHtml='description'>Short Bio</label>
+            <label forHtml='bio'>Short Bio</label>
             <textarea className='form-control' rows='4' id='bio' ref='bio' placeholder='short bio' {...bio} />
           </div>
 
           <div className='form-group'>
-            <label forHtml='author'>Author</label>
-            <input type='text' className='form-control' id='author' placeholder='author' ref='author' {...author} />
-          </div>
-
-          <div className='form-group'>
-            <label forHtml='category'>Category</label>
-            <input type='text' className='form-control' id='category' placeholder='category (quote, joke, etc)' ref='category' {...category} />
-          </div>
-
-          <div className='form-group'>
-            <label forHtml='tags'>Tags</label>
-            <input type='text' className='form-control' id='tags' placeholder='tags (comma separated)' ref='tags' {...tags} />
-          </div>
-
-          <div className='form-group'>
-            <label forHtml='image'>Background</label>
-            <input type='file' className='form-control' id='image' placeholder='background image' ref='image' {...image} value={null} />
+            <label forHtml='photo'>Background</label>
+            <input type='file' className='form-control' id='photo' placeholder='photo' ref='photo' {...photo} value={null} />
           </div>
 
           <input type='submit' value={btnLabel} className='btn btn-primary' />

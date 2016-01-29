@@ -1,6 +1,8 @@
 import React from 'react'
 import 'styles/core.scss'
 import {reduxForm} from 'redux-form'
+import { connect } from 'react-redux'
+import { actions as profileActions } from '../redux/modules/profile'
 
 export const fields = ['name', 'bio', 'photo']
 
@@ -15,7 +17,6 @@ export class ProfileView extends React.Component {
   }
 
   render () {
-
     const {
       fields: {name, bio, photo},
       resetForm
@@ -55,4 +56,4 @@ ProfileView = reduxForm({
   fields
 })(ProfileView)
 
-export default ProfileView
+export default connect(mapStateToProps, profileActions)(ProfileView)

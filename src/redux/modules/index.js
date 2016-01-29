@@ -5,6 +5,7 @@ import counter from './counter'
 import auth from './auth'
 import getquotes from './getquotes'
 import getquote from './quote'
+import profile from './profile'
 
 export default combineReducers({
   counter,

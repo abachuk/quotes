@@ -7,13 +7,21 @@ import { actions as profileActions } from '../redux/modules/profile'
 export const fields = ['name', 'bio', 'photo']
 
 const mapStateToProps = (state, props) => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 })
 
 export class ProfileView extends React.Component {
   static propTypes = {
     fields: React.PropTypes.object.isRequired,
-    resetForm: React.PropTypes.func.isRequired
+    resetForm: React.PropTypes.func.isRequired,
+    getProfile: React.PropTypes.func,
+    params: React.PropTypes.object
+  }
+
+  componentDidMount () {
+    this.props.getProfile(this.props.params.id)
+    console.log(this.props)
   }
 
   handleSubmit (e) {

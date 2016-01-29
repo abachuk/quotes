@@ -11,6 +11,10 @@ const mapStateToProps = (state, props) => ({
 })
 
 export class ProfileView extends React.Component {
+  static propTypes = {
+    fields: React.PropTypes.object.isRequired,
+    resetForm: React.PropTypes.func.isRequired
+  }
 
   handleSubmit (e) {
 

@@ -12,13 +12,14 @@ let authData = ref.getAuth() || {}
 // ------------------------------------
 const GET_PROFILE = 'GET_PROFILE'
 const PROFILE = 'PROFILE'
+const FETCH_STARTED = 'FETCH_STARTED'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 // export const login = () => ({ type: LOGIN })
 export const fetch = (id) => {
-  const ref = new Firebase(constants.FIREBASE + '/users')
+  const ref = new Firebase(constants.FIREBASE).child('users').child('bf0a4d96-52e7-4c75-b106-74d716d196ef')
   return (dispatch) => {
     ref.on('value', snapshot => dispatch({
       type: GET_PROFILE,
@@ -26,6 +27,26 @@ export const fetch = (id) => {
     }))
   }
 }
+
+export const getProfile = (id) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_STARTED })
+    dispatch(fetch(id))
+  }
+}
+
+
+function dataFromSnapshot (snapshot) {
+  let data = snapshot.val()
+  console.log(data)
+  return data
+}
+
+export const actions = {
+  fetch,
+  getProfile
+}
+
 // ------------------------------------
 // Reducer
 // ------------------------------------

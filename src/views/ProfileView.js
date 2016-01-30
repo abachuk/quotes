@@ -36,7 +36,7 @@ export class ProfileView extends React.Component {
     usersRef.child(uid).update({
       name: fields.name ? fields.name.value : '',
       bio: fields.bio ? fields.bio.value : ''
-    }, function(error) {
+    }, function (error) {
       console.log(error)
     })
   }
@@ -84,7 +84,7 @@ export class ProfileView extends React.Component {
 ProfileView = reduxForm({
   form: 'profileForm',
   fields
-}, function(state, props) {
+}, function (state, props) {
   return {initialValues: state.profile}
 })(ProfileView)
 

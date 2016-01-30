@@ -5,7 +5,7 @@ import constants from 'utils/constants'
 
 const ref = new Firebase(constants.FIREBASE)
 let authData = ref.getAuth() || {}
-console.log(authData)
+let profile = {}
 
 // ------------------------------------
 // Constants
@@ -59,4 +59,4 @@ export const actions = {
 // ------------------------------------
 export default handleActions({
   [GET_PROFILE]: (state, { payload }) => state + payload
-}, authData)
+}, profile)

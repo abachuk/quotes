@@ -13,6 +13,7 @@ export default combineReducers({
   auth: auth,
   quotes: getquotes,
   quote: getquote,
+  profile: profile,
   form: formReducer.normalize({
     newQuote: {
       tags: value => value && value.toString().split(',')

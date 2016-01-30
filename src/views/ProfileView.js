@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { actions as profileActions } from '../redux/modules/profile'
 
 export const fields = ['name', 'email', 'bio', 'photo']
+const ref = new Firebase(constants.FIREBASE)
+const usersRef = ref.child('users')
 
 const mapStateToProps = (state, props) => ({
   auth: state.auth,
@@ -22,10 +24,10 @@ export class ProfileView extends React.Component {
 
   componentDidMount () {
     this.props.getProfile(this.props.params.id)
-    console.log(this.props)
   }
 
   handleSubmit (e) {
+    e.preventDefault()
 
   }
 

@@ -4,7 +4,7 @@ import {reduxForm} from 'redux-form'
 import { connect } from 'react-redux'
 import { actions as profileActions } from '../redux/modules/profile'
 
-export const fields = ['name', 'bio', 'photo']
+export const fields = ['name', 'email', 'bio', 'photo']
 
 const mapStateToProps = (state, props) => ({
   auth: state.auth,
@@ -22,7 +22,7 @@ export class ProfileView extends React.Component {
 
   componentDidMount () {
     this.props.getProfile(this.props.params.id)
-    console.log(this.props.profile)
+    console.log(this.props)
   }
 
   handleSubmit (e) {
@@ -31,7 +31,7 @@ export class ProfileView extends React.Component {
 
   render () {
     const {
-      fields: {name, bio, photo},
+      fields: {name, email, bio, photo},
       resetForm
     } = this.props
 
@@ -44,6 +44,11 @@ export class ProfileView extends React.Component {
           <div className='form-group'>
             <label forHtml='name'>Name</label>
             <input type='text' className='form-control' id='name' placeholder='Name' ref='name' {...name} />
+          </div>
+
+          <div className='form-group'>
+            <label forHtml='email'>Email</label>
+            <input readOnly='readonly' type='email' className='form-control' id='email' placeholder='Email' ref='name' {...email} />
           </div>
 
           <div className='form-group'>
@@ -67,6 +72,8 @@ export class ProfileView extends React.Component {
 ProfileView = reduxForm({
   form: 'profileForm',
   fields
+}, function(state, props) {
+  return {initialValues: state.profile}
 })(ProfileView)
 
 export default connect(mapStateToProps, profileActions)(ProfileView)

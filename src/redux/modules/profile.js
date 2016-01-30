@@ -38,6 +38,7 @@ export const getProfile = (id) => {
 
 function dataFromSnapshot (snapshot) {
   let data = snapshot.val()
+  console.log(snapshot)
   console.log(data)
   return data
 }

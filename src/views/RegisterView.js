@@ -39,8 +39,11 @@ export class RegisterView extends React.Component {
         } else {
           console.log(self)
           console.log('registered with', authData)
-          self.props.history.pushState(null, '/')
           self.props.login(authData)
+          ref.child('users').child(authData.uid).set({
+            email: email
+          });
+          self.props.history.pushState(null, '/')
         }
       })
     } else {

@@ -1,4 +1,4 @@
-import { createAction, handleActions } from 'redux-actions'
+import { handleActions } from 'redux-actions'
 // import createReducer from 'utils/createReducer'
 import Firebase from 'firebase'
 import constants from 'utils/constants'
@@ -11,7 +11,6 @@ let profile = {}
 // Constants
 // ------------------------------------
 const GET_PROFILE = 'GET_PROFILE'
-const PROFILE = 'PROFILE'
 const FETCH_STARTED = 'FETCH_STARTED'
 
 // ------------------------------------
@@ -34,7 +33,6 @@ export const getProfile = (id) => {
     dispatch(fetch(id))
   }
 }
-
 
 function dataFromSnapshot (snapshot) {
   let data = snapshot.val()

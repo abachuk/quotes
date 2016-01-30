@@ -78,7 +78,7 @@ export class QuotesNew extends React.Component {
         imageBase64 = res.currentTarget.result
         quote.image = imageBase64
         pushToFirebase()
-      }.bind(this)
+      }
 
       fr.readAsDataURL(image)
     } else {

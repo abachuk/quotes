@@ -42,7 +42,7 @@ export class RegisterView extends React.Component {
           self.props.login(authData)
           ref.child('users').child(authData.uid).set({
             email: email
-          });
+          })
           self.props.history.pushState(null, '/')
         }
       })

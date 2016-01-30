@@ -5,7 +5,7 @@ import constants from 'utils/constants'
 
 const ref = new Firebase(constants.FIREBASE)
 let authData = ref.getAuth() || {}
-
+console.log(authData)
 
 // ------------------------------------
 // Constants
@@ -19,7 +19,7 @@ const FETCH_STARTED = 'FETCH_STARTED'
 // ------------------------------------
 // export const login = () => ({ type: LOGIN })
 export const fetch = (id) => {
-  const ref = new Firebase(constants.FIREBASE).child('users').child('bf0a4d96-52e7-4c75-b106-74d716d196ef')
+  const ref = new Firebase(constants.FIREBASE).child('users').child(authData.uid)
   return (dispatch) => {
     ref.on('value', snapshot => dispatch({
       type: GET_PROFILE,
@@ -38,8 +38,6 @@ export const getProfile = (id) => {
 
 function dataFromSnapshot (snapshot) {
   let data = snapshot.val()
-  console.log(snapshot)
-  console.log(data)
   return data
 }
 

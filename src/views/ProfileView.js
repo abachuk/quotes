@@ -16,7 +16,8 @@ export class ProfileView extends React.Component {
     fields: React.PropTypes.object.isRequired,
     resetForm: React.PropTypes.func.isRequired,
     getProfile: React.PropTypes.func,
-    params: React.PropTypes.object
+    params: React.PropTypes.object,
+    profile: React.PropTypes.object
   }
 
   componentDidMount () {

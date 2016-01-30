@@ -32,6 +32,7 @@ export class ProfileView extends React.Component {
   handleSubmit (e) {
     e.preventDefault()
     const uid = this.props.auth.auth.uid
+    let fields = this.props.fields
     usersRef.child(uid).update({
       name: fields.name ? fields.name.value : '',
       bio: fields.bio ? fields.bio.value : ''

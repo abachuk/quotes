@@ -22,7 +22,7 @@ export class ProfileView extends React.Component {
 
   componentDidMount () {
     this.props.getProfile(this.props.params.id)
-    console.log(this.props)
+    console.log(this.props.profile)
   }
 
   handleSubmit (e) {

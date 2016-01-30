@@ -58,5 +58,5 @@ export const actions = {
 // Reducer
 // ------------------------------------
 export default handleActions({
-  [GET_PROFILE]: (state, { payload }) => state + payload
+  [GET_PROFILE]: (state, { payload }) => payload
 }, profile)

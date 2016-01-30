@@ -21,7 +21,8 @@ export class ProfileView extends React.Component {
     resetForm: React.PropTypes.func.isRequired,
     getProfile: React.PropTypes.func,
     params: React.PropTypes.object,
-    profile: React.PropTypes.object
+    profile: React.PropTypes.object,
+    auth: React.PropTypes.object
   }
 
   componentDidMount () {
@@ -30,7 +31,13 @@ export class ProfileView extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-
+    const uid = this.props.auth.auth.uid
+    usersRef.child(uid).update({
+      name: fields.name ? fields.name.value : '',
+      bio: fields.bio ? fields.bio.value : ''
+    }, function(error) {
+      console.log(error)
+    })
   }
 
   render () {

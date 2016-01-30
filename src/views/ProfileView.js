@@ -1,6 +1,8 @@
 import React from 'react'
 import 'styles/core.scss'
 import {reduxForm} from 'redux-form'
+import Firebase from 'firebase'
+import constants from 'utils/constants'
 import { connect } from 'react-redux'
 import { actions as profileActions } from '../redux/modules/profile'
 

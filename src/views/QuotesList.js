@@ -23,8 +23,13 @@ export class QuotesList extends React.Component {
   }
 
   render () {
+    let categories = _.countBy(this.props.quotes, 'category')
+    console.log(categories)
     return (
       <div className={styles['quotes-container']}>
+        <select className='categories'>
+          <option>All</option>
+        </select>
         <ul className={styles['quotes-list']}>
           {_.map(this.props.quotes, function (val, key) {
             return <QuoteTile quote={val} key={key} id={key} />

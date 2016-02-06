@@ -42,7 +42,7 @@ export class ProfileView extends React.Component {
   }
 
   deleteAccount (e) {
-    
+
   }
 
   render () {
@@ -84,7 +84,14 @@ export class ProfileView extends React.Component {
         <button className='btn-danger btn'>Delete my account</button>
 
         <form onSubmit={this.deleteAccount.bind(this)}>
-
+          <div className='form-group'>
+            <label forHtml='email'>Email</label>
+            <input type='email' className='form-control' id='delete-email' placeholder='Email' ref='delete-email' />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='password'>Password</label>
+            <input type='password' ref='password' className='form-control' id='password' placeholder='Password' />
+          </div>
         </form>
       </div>
     )

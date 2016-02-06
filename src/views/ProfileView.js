@@ -41,6 +41,10 @@ export class ProfileView extends React.Component {
     })
   }
 
+  deleteAccount (e) {
+    
+  }
+
   render () {
     const {
       fields: {name, email, bio, photo},
@@ -75,7 +79,12 @@ export class ProfileView extends React.Component {
 
           <input type='submit' value='Update' className='btn btn-primary' />
           <input type='button' value='Reset' className='btn btn-danger' onClick={resetForm} />
-          <button className='btn-danger btn'>Delete my account</button>
+        </form>
+
+        <button className='btn-danger btn'>Delete my account</button>
+
+        <form onSubmit={this.deleteAccount.bind(this)}>
+
         </form>
       </div>
     )

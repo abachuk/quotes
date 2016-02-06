@@ -92,6 +92,7 @@ export class ProfileView extends React.Component {
             <label htmlFor='password'>Password</label>
             <input type='password' ref='password' className='form-control' id='password' placeholder='Password' />
           </div>
+          <input type='submit' value='I understand my data will be gone' className='btn btn-danger' />
         </form>
       </div>
     )

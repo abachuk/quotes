@@ -75,6 +75,7 @@ export class ProfileView extends React.Component {
 
           <input type='submit' value='Update' className='btn btn-primary' />
           <input type='button' value='Reset' className='btn btn-danger' onClick={resetForm} />
+          <button className='btn-danger btn'>Delete my account</button>
         </form>
       </div>
     )

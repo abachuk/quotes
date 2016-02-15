@@ -22,12 +22,16 @@ export class QuotesList extends React.Component {
     this.props.getQuotes()
   }
 
+  filterList () {
+    console.log(this)
+  }
+
   render () {
     let categories = _.countBy(this.props.quotes, 'category')
     console.log(categories)
     return (
       <div className={styles['quotes-container']}>
-        <select className='categories'>
+        <select className='categories' onChange={this.filterList}>
           <option>All</option>
           {_.map(categories, function (val, key) {
             return <option value={key} key={key}>{key} ({val})</option>

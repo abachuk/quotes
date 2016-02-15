@@ -31,7 +31,7 @@ export class QuotesList extends React.Component {
     console.log(categories)
     return (
       <div className={styles['quotes-container']}>
-        <select className='categories' onChange={this.filterList}>
+        <select className='categories' onChange={this.filterList.bind(this)}>
           <option>All</option>
           {_.map(categories, function (val, key) {
             return <option value={key} key={key}>{key} ({val})</option>

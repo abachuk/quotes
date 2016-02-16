@@ -22,8 +22,9 @@ export class QuotesList extends React.Component {
     this.props.getQuotes()
   }
 
-  filterList () {
+  filterList (e) {
     console.log(this)
+    console.log(e.target.value)
   }
 
   render () {

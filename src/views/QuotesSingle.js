@@ -20,7 +20,7 @@ export class QuotesSingle extends React.Component {
 
   componentDidMount () {
     this.props.getQuote(this.props.params.id)
-    console.log(this.props)
+    // console.log(this.props)
   }
 
   render () {

@@ -11,6 +11,9 @@ let quote = {}
 const GET_QUOTE = 'GET_QUOTES'
 const CLEAR_QUOTE = 'CLEAR_QUOTE'
 const FETCH_STARTED = 'FETCH_STARTED'
+const SHOW_ALL = 'SHOW_ALL'
+const SHOW_QUOTES = 'SHOW_QUOTES'
+const SHOW_JOKES = 'SHOW_JOKES'
 
 // ------------------------------------
 // Actions
